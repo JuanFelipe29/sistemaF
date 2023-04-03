@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @channel %>
+
+<div class="btn-group">
+  <%= link_to "Editar este canal", edit_channel_path(@channel), class: "btn btn-primary" %> 
+  <%= link_to "Volver a los canales", channels_path, class: "btn btn-secondary" %>
+  <%= button_to "Eliminar este canal", @channel, method: :delete, data: { confirm: "¿Estás seguro que deseas eliminar este canal?" }, class: "btn btn-danger ml-auto" %>
+</div>

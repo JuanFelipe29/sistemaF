@@ -1,0 +1,33 @@
+<%= form_with(model: family, class: "form-horizontal") do |form| %>
+  <% if family.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(family.errors.count, "error") %> prohibited this family from being saved:</h2>
+
+      <ul>
+        <% family.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :code, "Codigo" ,class: "control-label col-sm-2" %>
+    <div class="col-sm-10">
+      <%= form.text_field :code, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :name, "Nombre" ,class: "control-label col-sm-2" %>
+    <div class="col-sm-10">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit "Guardar", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,51 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Insumos</h1>
+
+<%= link_to "Agregar Insumo", "#modal-supply", class: "btn btn-primary", data: { toggle: "modal" } %>
+<br>
+<br>
+<div id="supplies">
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th class="border">Proveedor</th>
+        <th class="border">Código</th>
+        <th class="border">Nombre</th>
+        <th class="border">Cantidad</th>
+        <th class="border">Precio unitario</th>
+        <th class="border">Valor total</th>
+        <th class="border"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @supplies.each do |supply| %>
+        <tr id="<%= dom_id supply %>">
+          <td class="border"><%= supply.supplier_id %></td>
+          <td class="border"><%= supply.code %></td>
+          <td class="border"><%= supply.name %></td>
+          <td class="border"><%= supply.quantity %></td>
+          <td class="border"><%= supply.unit_price %></td>
+          <td class="border"><%= supply.total_value %></td>
+          <td class="border"><%= link_to "Ver detalle", supply %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal fade" id="modal-supply" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ingreso de Insumo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', supply: Supply.new, class: "form-horizontal" %>
+      </div>
+    </div>
+  </div>

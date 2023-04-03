@@ -1,0 +1,47 @@
+<%= form_with(model: supply, class: "form") do |form| %>
+  <% if supply.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(supply.errors.count, "error") %> han impedido que se guarde esta entrada:</h4>
+
+      <ul>
+        <% supply.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :supplier_id, "Proveedor" %>
+    <%= form.text_field :supplier_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :code, "Código" %>
+    <%= form.text_field :code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :name, "Nombre" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :quantity, "Cantidad" %>
+    <%= form.text_field :quantity, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :unit_price, "Precio unitario" %>
+    <%= form.text_field :unit_price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :total_value, "Valor total" %>
+    <%= form.text_field :total_value, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

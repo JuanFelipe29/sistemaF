@@ -1,0 +1,18 @@
+<div id="<%= dom_id channel %>" class="card border-primary mb-3">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">Ficha Técnica</h5>
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Familia:</strong> <%= channel.family.name %></li>
+      <li class="list-group-item"><strong>Proveedor:</strong> <%= channel.supplier.name %></li>
+      <li class="list-group-item"><strong>Fecha de nacimiento:</strong> <%= channel.born_date.strftime("%d/%m/%Y") %></li>
+      <li class="list-group-item"><strong>Fecha de sacrificio:</strong> <%= channel.slaughter_date.strftime("%d/%m/%Y") %></li>
+      <li class="list-group-item"><strong>Crotal:</strong> <%= channel.crotal %></li>
+      <li class="list-group-item"><strong>Lote:</strong> <%= channel.lot %></li>
+      <li class="list-group-item"><strong>Peso:</strong> <%= channel.weight %> kg</li>
+      <li class="list-group-item"><strong>Temperatura:</strong> <%= channel.temperature %> °C</li>
+      <li class="list-group-item"><strong>Valor total:</strong> <%= channel.total_value %> euros</li>
+    </ul>
+  </div>
+</div>

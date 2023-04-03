@@ -1,0 +1,63 @@
+<h1>Canales</h1>
+
+<%= link_to "Agregar canal", "#modal-channel", class: "btn btn-primary", data: { toggle: "modal" } %>
+<br>
+<br>
+<div id="channels">
+  <table class="table table-bordered table-light border">
+    <thead class="thead-light">
+      <tr>
+        <th>Familia</th>
+        <th>Proveedor</th>
+        <th>Fecha de nacimiento</th>
+        <th>Fecha de sacrificio</th>
+        <th>Crotal</th>
+        <th>Lote</th>
+        <th>Peso</th>
+        <th>Temperatura</th>
+        <th>Valor total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @channels.each do |channel| %>
+        <tr id="<%= dom_id channel %>">
+          <td><%= channel.family.name %></td>
+          <td><%= channel.supplier.name %></td>
+          <td><%= channel.born_date.strftime("%d/%m/%Y") %></td>
+          <td><%= channel.slaughter_date.strftime("%d/%m/%Y") %></td>
+          <td><%= channel.crotal %></td>
+          <td><%= channel.lot %></td>
+          <td><%= channel.weight %></td>
+          <td><%= channel.temperature %></td>
+          <td><%= channel.total_value %></td>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to "Ver", channel, class: "btn btn-primary" %> 
+              <%= link_to "Editar", edit_channel_path(channel), class: "btn btn-secondary" %> 
+              <%= link_to "Eliminar", channel, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+<div class="modal fade" id="modal-channel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ingreso de Canal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', channel: Channel.new, class: "form-horizontal" %>
+      </div>
+    </div>
+  </div>
+</div>

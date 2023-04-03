@@ -1,0 +1,62 @@
+<%= form_with(model: channel, class: "form") do |form| %>
+  <% if channel.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(channel.errors.count, "error") %> han impedido que se guarde este canal:</h2>
+
+      <ul>
+        <% channel.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :family_id, "Familia" %>
+      <%= form.collection_select :family_id, Family.order(:name), :id, :name, { prompt: 'Seleccione la familia' }, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+   <%= form.label :supplier_id, "Proveedor" %>
+   <%= form.collection_select :supplier_id, Supplier.order(:name), :id, :name, { prompt: 'Seleccione el proveedor' }, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :born_date, "Fecha de nacimiento", style: "display: block" %>
+    <%= form.date_field :born_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :slaughter_date, "Fecha de sacrificio", style: "display: block" %>
+    <%= form.date_field :slaughter_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :crotal, "Crotal", style: "display: block" %>
+    <%= form.text_field :crotal, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :lot, "Lote", style: "display: block" %>
+    <%= form.text_field :lot, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :weight, "Peso", style: "display: block" %>
+    <%= form.text_field :weight, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :temperature, "Temperatura", style: "display: block" %>
+    <%= form.text_field :temperature, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :total_value, "Valor total", style: "display: block" %>
+    <%= form.text_field :total_value, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

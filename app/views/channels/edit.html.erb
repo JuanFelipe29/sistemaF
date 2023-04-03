@@ -1,0 +1,11 @@
+<h1>Editar Canal</h1>
+
+<%= render "form", channel: @channel %>
+
+<br>
+
+<div class="btn-group">
+  <%= link_to "Mostrar este canal", @channel, class: "btn btn-primary" %> 
+  <%= link_to "Volver a los canales", channels_path, class: "btn btn-secondary" %>
+</div>
+

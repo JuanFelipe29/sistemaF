@@ -1,0 +1,52 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Familias</h1>
+
+<%= link_to "Agregar Familia", "#modal-family", class: "btn btn-primary", data: { toggle: "modal" } %>
+<br>
+<br>
+<div id="families">
+  <table class="table table-bordered table-light border">
+    <thead class="thead-light">
+      <tr>
+        <th class="border">Código</th>
+        <th class="border">Nombre</th>
+        <th class="border">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @families.each do |family| %>
+        <tr id="<%= dom_id family %>">
+          <td class="border"><%= family.code %></td>
+          <td class="border"><%= family.name %></td>
+          <td class="border">
+            <div class="btn-group" role="group">
+              <%= link_to "Editar", edit_family_path(family), class: "btn btn-secondary" %> 
+              <%= link_to "Eliminar", family, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+<div class="modal fade" id="modal-family" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ingreso de Familia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', family: Family.new, class: "form-horizontal" %>
+      </div>
+    </div>
+  </div>
+</div>

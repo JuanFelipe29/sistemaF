@@ -1,0 +1,27 @@
+<%= form_with(model: piece_name) do |form| %>
+  <% if piece_name.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(piece_name.errors.count, "error") %> prohibited this piece_name from being saved:</h2>
+
+      <ul>
+        <% piece_name.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :family_id, style: "display: block" %>
+    <%= form.text_field :family_id %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

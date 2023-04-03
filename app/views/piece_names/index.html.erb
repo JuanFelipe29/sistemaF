@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Nombres de piezas</h1>
+
+<%= link_to "Agregar Insumo", "#modal-supply", class: "btn btn-primary", data: { toggle: "modal" } %>
+<br>
+<br>
+
+
+<div id="piece_names">
+  <table class="table table-bordered table-light border">
+    <thead class="thead-light">
+      <tr>
+        <th>Familia</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @piece_names.each do |piece_name| %>
+        <tr id="<%= dom_id piece_name %>">
+          <td><%= piece_name.family_id %></td>
+          <td><%= piece_name.name %></td>
+          <td>
+            <%= link_to "Ver", piece_name, class: "btn btn-info" %>
+            <%= link_to "Editar", edit_piece_name_path(piece_name), class: "btn btn-secondary" %>
+            <%= link_to "Eliminar", piece_name, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+
