@@ -4,7 +4,53 @@
 
 <div id="pieces">
   <% @pieces.each do |piece| %>
-    <%= render piece %>
+    <div id="<%= dom_id piece %>">
+  <p>
+    <strong>Channel:</strong>
+    <%= piece.channel_id %>
+  </p>
+
+  <p>
+    <strong>Piece name:</strong>
+    <%= piece.piece_name_id %>
+  </p>
+
+  <p>
+    <strong>Lot:</strong>
+    <%= piece.lot %>
+  </p>
+
+  <p>
+    <strong>Weight:</strong>
+    <%= piece.weight %>
+  </p>
+
+  <p>
+    <strong>Start date maturation:</strong>
+    <%= piece.start_date_maturation %>
+  </p>
+
+  <p>
+    <strong>End date of maturation:</strong>
+    <%= piece.end_date_of_maturation %>
+  </p>
+
+  <p>
+    <strong>Matured:</strong>
+    <%= piece.matured %>
+  </p>
+
+  <p>
+    <strong>Available:</strong>
+    <%= piece.available %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= piece.user_id %>
+  </p>
+
+</div>
     <p>
       <%= link_to "Show this piece", piece %>
     </p>

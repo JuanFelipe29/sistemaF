@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'quarterings/index'
+  resources :quarterings
   resources :pieces
   resources :supplies
   resources :channels

@@ -1,2 +1,74 @@
-<h1>Quarterings#index</h1>
-<p>Find me in app/views/quarterings/index.html.erb</p>
+<h1>Canales</h1>
+<br>
+<br>
+<div id="channels">
+  <table class="table table-bordered table-light border">
+    <thead class="thead-light">
+      <tr>
+        <th>Familia</th>
+        <th>Crotal</th>
+        <th>Lote</th>
+        <th>Peso</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @channels.each do |channel| %>
+        <tr id="<%= dom_id channel %>">
+          <td><%= channel.family.name %></td>
+          <td><%= channel.crotal %></td>
+          <td><%= channel.lot %></td>
+          <td><%= channel.weight %></td>
+          <td>
+            <div class="btn-group" role="group">
+             <%= link_to "New piece", new_piece_path(channel_id: channel.id),  class: 'btn btn-primary' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h1>Piezas</h1>
+
+<div id="pieces">
+  <table class="table table-bordered table-light border">
+    <thead class="thead-light">
+      <tr>
+        <th>Canal</th>
+        <th>Nombre de pieza</th>
+        <th>Lote</th>
+        <th>Peso</th>
+        <th>Inicio de maduración</th>
+        <th>Fin de maduración</th>
+        <th>Madurado</th>
+        <th>Disponible</th>
+        <th>Usuario</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pieces.each do |piece| %>
+        <tr id="<%= dom_id piece %>">
+          <td><%= piece.channel_id %></td>
+          <td><%= piece.piece_name_id %></td>
+          <td><%= piece.lot %></td>
+          <td><%= piece.weight %></td>
+          <td><%= piece.start_date_maturation %></td>
+          <td><%= piece.end_date_of_maturation %></td>
+          <td><%= piece.matured %></td>
+          <td><%= piece.available %></td>
+          <td><%= piece.user_id %></td>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to "Ver", piece, class: "btn btn-primary" %> 
+              <%= link_to "Editar", edit_piece_path(piece), class: "btn btn-secondary" %> 
+              <%= link_to "Eliminar", piece, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
